@@ -1,5 +1,7 @@
 package com.br.crudspring.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,8 @@ import com.br.crudspring.models.Person;
 import com.br.crudspring.repository.Repointerface;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 /**
@@ -24,6 +28,11 @@ public class RouteControl {
   @PostMapping("/api")
   public Person createPerson(@RequestBody Person obj){
     return action.save(obj);
+  }
+
+  @GetMapping("/api")
+  public List<Person> selectPersons(){
+    return action.findAll();
   }
 
   @GetMapping("/{name}")
