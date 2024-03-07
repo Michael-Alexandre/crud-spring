@@ -19,6 +19,12 @@ public interface Repointerface extends CrudRepository<Person, Integer>{
 
   List<Person> findBySetorContaining(String termo);
 
+  List<Person> findByNome(String nome);
+
+  List<Person> findBySetor(String setor);
+
   @Query(value = "SELECT COUNT(DISTINCT setor) FROM person LIMIT 100", nativeQuery = true)
   int sectorQtd();
+
+  int countByCodigo(int codigo);
 }
