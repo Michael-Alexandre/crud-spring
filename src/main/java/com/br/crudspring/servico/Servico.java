@@ -64,5 +64,18 @@ public class Servico {
     }
   }
 
+  // metodo para remover pessoas
+  public ResponseEntity<?> removePerson(int codigo){
+
+    if(action.countByCodigo(codigo) == 0){
+      mensagem.setMensagem("codigo informado não existe");
+      return new ResponseEntity<>(mensagem, HttpStatus.NOT_FOUND);
+    }else{
+      Person objPerson = action.findByCodigo(codigo);
+      action.delete(objPerson);
+      mensagem.setMensagem("Removido com sucesso");
+      return new ResponseEntity<>(mensagem , HttpStatus.OK);
+    }
+  }
 
 }
