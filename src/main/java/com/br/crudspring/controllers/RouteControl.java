@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.crudspring.models.Customer;
 import com.br.crudspring.models.Person;
 import com.br.crudspring.repository.Repointerface;
 import com.br.crudspring.servico.Servico;
+
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,6 +34,11 @@ public class RouteControl {
 
   @Autowired
   private Servico servico;
+
+  @PostMapping("/customer")
+  public void customer(@Valid @RequestBody Customer objCustomer){
+
+  }
 
   @PostMapping("/api")
   public ResponseEntity<?> inputPerson(@RequestBody Person obj){
